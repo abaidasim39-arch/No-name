@@ -29,8 +29,10 @@ jobs:
         pip install --upgrade pip
         pip install buildozer cython
 
-    - name: Build APK with Buildozer
+    - name: Force Clean Cache & Build APK
       run: |
-        # Purana cache clear karne ke liye aur fresh tools force karne ke liye
-        buildozer android clean
+        # Toote hue cache folder ko jadd se delete karne ke liye
+        rm -rf .buildozer
+        rm -rf bin
+        # Bilkul fresh toolchain compilation
         yes | buildozer -v android debug
